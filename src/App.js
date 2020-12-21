@@ -3,10 +3,10 @@ import './App.css';
 import { Getstockdata } from './getStockData';
 import {Stockdata} from './StockData';
 function App() {
-  Stockdata();
+  // Stockdata();
   return (
     <div className="App">
-     <h1>Hello</h1>
+     <Stockdata />
     </div>
   );
 }

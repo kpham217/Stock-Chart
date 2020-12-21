@@ -7,6 +7,7 @@ export async function Getstockdata(symbol) {
     let openValues = [];
     let highValues = [];
     try{
+        console.log('executed');
         await fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${stock_symbol}&interval=5min&apikey=${API_KEY}`)
         .then(function(res) {
             return res.json();
