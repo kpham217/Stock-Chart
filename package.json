@@ -12,6 +12,7 @@
     "react-linechart": "^1.1.12",
     "react-plotly.js": "^2.5.1",
     "react-scripts": "4.0.1",
+    "react-stockcharts": "^0.7.8",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
