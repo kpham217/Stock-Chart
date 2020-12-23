@@ -7,15 +7,7 @@ import classes from './ChartComponent.module.css';
 // import  LineChart from './LineChart';
 export function Stockdata(props) {
     const [symbolData, setData] = useState([]);
-    const data = [
-        {
-            color: "steelblue",
-            type: 'scatter',
-            mode: 'lines+markers',
-            marker: { color: 'green' },
-            points: [{ x: 1, y: 2 }, { x: 3, y: 5 }, { x: 7, y: -3 }]
-        }
-    ];
+  
     useEffect(async () => {
         async function fetchMyData() {
             const data = await Getstockdata();
@@ -47,14 +39,18 @@ export function Stockdata(props) {
 
     return (
         <div>
-            <div className="App">
+            {/* <div className="App"> */}
                     {symbolData.length > 0 ? (
-                    <div className={classes.chartWrapper}> 
+                    <div style={{position: 'relative'}} 
+                    // className={classes.chartWrapper}
+                    > 
                     <h1 >{symbolData[0].stock_symbol}</h1>
-                   <Chart type='canvas + svg' data={symbolData} />
+                    <TypeChooser>
+				{type => <Chart type={type} data={symbolData} />}
+			</TypeChooser>
                 </div>) : null}
                 
-            </div>
+            {/* </div> */}
         </div>
     )
 }

@@ -13,24 +13,24 @@ export async function Getstockdata(symbol) {
 
     try{
         console.log('executed');
-        // await fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${stock_symbol}&interval=5min&apikey=${API_KEY}`)
-        // .then(function(res) {
-        //     return res.json();
-        // })
-        // .then(data => {
-        //     console.log(data)
-        //     for (let x in data['Time Series (5min)']){
-        //         resultdata.push({
-        //             stock_symbol,
-        //             date: new Date(x),
-        //             open: data['Time Series (5min)'][x]['1. open'],
-        //             high: data['Time Series (5min)'][x]['2. high'],
-        //             low: data['Time Series (5min)'][x]['3. low'],
-        //             close: data['Time Series (5min)'][x]['4. close'],
-        //             volume: data['Time Series (5min)'][x]['5. volume']
-        //         })
-        //     }
-        // })
+        await fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${stock_symbol}&interval=5min&apikey=${API_KEY}`)
+        .then(function(res) {
+            return res.json();
+        })
+        .then(data => {
+            console.log(data)
+            for (let x in data['Time Series (5min)']){
+                resultdata.push({
+                    stock_symbol,
+                    date: new Date(x),
+                    open: data['Time Series (5min)'][x]['1. open'],
+                    high: data['Time Series (5min)'][x]['2. high'],
+                    low: data['Time Series (5min)'][x]['3. low'],
+                    close: data['Time Series (5min)'][x]['4. close'],
+                    volume: data['Time Series (5min)'][x]['5. volume']
+                })
+            }
+        })
         const data = {
             "Meta Data": {
                 "1. Information": "Intraday (5min) open, high, low, close prices and volume",
@@ -743,18 +743,18 @@ export async function Getstockdata(symbol) {
                 }
             }
         };
-        const parseDate = timeParse("%Y-%m-%d");
-        for (let x in data['Time Series (5min)']){
-                    resultdata.push({
-                        stock_symbol,
-                        date: new Date(x),
-                        open: data['Time Series (5min)'][x]['1. open'],
-                        high: data['Time Series (5min)'][x]['2. high'],
-                        low: data['Time Series (5min)'][x]['3. low'],
-                        close: data['Time Series (5min)'][x]['4. close'],
-                        volume: data['Time Series (5min)'][x]['5. volume']
-                    })
-        }
+        // const parseDate = timeParse("%Y-%m-%d");
+        // for (let x in data['Time Series (5min)']){
+        //             resultdata.push({
+        //                 stock_symbol,
+        //                 date: new Date(x),
+        //                 open: data['Time Series (5min)'][x]['1. open'],
+        //                 high: data['Time Series (5min)'][x]['2. high'],
+        //                 low: data['Time Series (5min)'][x]['3. low'],
+        //                 close: data['Time Series (5min)'][x]['4. close'],
+        //                 volume: data['Time Series (5min)'][x]['5. volume']
+        //             })
+        // }
     }catch (e) {
         console.log(e)
         
