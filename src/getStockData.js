@@ -12,17 +12,23 @@ export async function Getstockdata(symbol) {
     let resultdata = [];
 
     try{
-        // console.log('executed');
+        console.log('executed');
         // await fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${stock_symbol}&interval=5min&apikey=${API_KEY}`)
         // .then(function(res) {
         //     return res.json();
-        // }).then(data => {
+        // })
+        // .then(data => {
         //     console.log(data)
         //     for (let x in data['Time Series (5min)']){
-        //         period.push(x);
-        //         closeValues.push(data['Time Series (5min)'][x]['4. close']);
-        //         openValues.push(data['Time Series (5min)'][x]['1. open']);
-        //         highValues.push(data['Time Series (5min)'][x]['2. high']);
+        //         resultdata.push({
+        //             stock_symbol,
+        //             date: new Date(x),
+        //             open: data['Time Series (5min)'][x]['1. open'],
+        //             high: data['Time Series (5min)'][x]['2. high'],
+        //             low: data['Time Series (5min)'][x]['3. low'],
+        //             close: data['Time Series (5min)'][x]['4. close'],
+        //             volume: data['Time Series (5min)'][x]['5. volume']
+        //         })
         //     }
         // })
         const data = {
@@ -739,12 +745,6 @@ export async function Getstockdata(symbol) {
         };
         const parseDate = timeParse("%Y-%m-%d");
         for (let x in data['Time Series (5min)']){
-                    // period.push(new Date(x));
-                    // closeValues.push(data['Time Series (5min)'][x]['4. close']);
-                    // openValues.push(data['Time Series (5min)'][x]['1. open']);
-                    // highValues.push(data['Time Series (5min)'][x]['2. high']);
-                    // lowValues.push(data['Time Series (5min)'][x]['3. low']);
-                    // volumeValues.push(data['Time Series (5min)'][x]['5. volume']);
                     resultdata.push({
                         stock_symbol,
                         date: new Date(x),

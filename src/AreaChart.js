@@ -22,8 +22,8 @@ class AreaChart extends React.Component {
         const { data, type, width, ratio } = this.props;
         console.log(data.length +'insd');
 		return (
-			<ChartCanvas ratio={ratio} width={width} height={600}
-				margin={{ left: 50, right: 50, top: 10, bottom: 30 }}
+			<ChartCanvas ratio={ratio} width={width} height={400}
+				margin={{ left: 50, right: 50, top: 100, bottom: 30 }}
 				seriesName="MSFT"
 				data={data} type={type}
 				xAccessor={d => d.date}

@@ -3,7 +3,7 @@ import { Getstockdata } from './getStockData';
 // import LineChart from 'react-linechart';
 import Chart from './AreaChart';
 import { TypeChooser } from "react-stockcharts/lib/helper";
-
+import classes from './ChartComponent.module.css';
 // import  LineChart from './LineChart';
 export function Stockdata(props) {
     const [symbolData, setData] = useState([]);
@@ -41,22 +41,18 @@ export function Stockdata(props) {
         //         console.log(error);
         //     }
 
-        // }, 50000);
+        // }, 60000 * 5);
         // return () => clearInterval(interval);
     }, []);
 
     return (
         <div>
             <div className="App">
-                {/* <h1>My First LineChart</h1>
-					<LineChart 
-						width={600}
-						height={400}
-						data={data}
-					/> */}
-                    {symbolData.length > 0 ? (<TypeChooser>
-                    {type => <Chart type={type} data={symbolData} />}
-                </TypeChooser>) : null}
+                    {symbolData.length > 0 ? (
+                    <div className={classes.chartWrapper}> 
+                    <h1 >{symbolData[0].stock_symbol}</h1>
+                   <Chart type='canvas + svg' data={symbolData} />
+                </div>) : null}
                 
             </div>
         </div>
