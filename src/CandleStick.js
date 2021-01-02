@@ -140,39 +140,31 @@ class CandleStickChartWithCHMousePointer extends React.Component {
 					<CandlestickSeries />
 					<OHLCTooltip forChart={1} origin={[-40, 0]} />
 				</Chart>
-				{/* <Chart
-					id={2}
-					height={150}
+				<Chart id={2}
 					yExtents={d => d.volume}
-					origin={(w, h) => [0, h - 150]}
+					height={120} origin={(w, h) => [0, h - 120]}
 				>
-					<YAxis
-						axisAt="left"
-						orient="left"
-						ticks={6}
-						tickFormat={format(".0s")}
-					/>
+					<YAxis axisAt="left" orient="left" ticks={5} tickFormat={format(".2s")}/>
 
 					<MouseCoordinateX
 						at="bottom"
 						orient="bottom"
-						displayFormat={timeFormat("%Y-%m-%d")}
-					/>
+						displayFormat={timeFormat("%Y-%m-%d")} />
 					<MouseCoordinateY
 						at="left"
 						orient="left"
-						displayFormat={format(".4s")}
-					/>
+						displayFormat={format(".4s")} />
 
 					<BarSeries
 						yAccessor={d => d.volume}
-						fill={d => (d.close > d.open ? "#6BA583" : "#FF0000")}
-					/>
-				</Chart> */}
-				<Chart id={2} yExtents={d => d.volume}>
+						stroke
+						fill={d => d.close > d.open ? "#54c45d" : "#e87d7d"}
+						opacity={0.5} />
+				</Chart>
+				{/* <Chart id={2} yExtents={d => d.volume}>
         <YAxis axisAt="left" orient="left" ticks={5} tickFormat={format(".0s")}/>
         <BarSeries yAccessor={d => d.volume} />
-    </Chart>
+    </Chart> */}
 				<CrossHairCursor />
 			</ChartCanvas>
 		);
