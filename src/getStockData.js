@@ -27,7 +27,7 @@ export async function Getstockdata(symbol) {
         //             high: data['Time Series (5min)'][x]['2. high'],
         //             low: data['Time Series (5min)'][x]['3. low'],
         //             close: data['Time Series (5min)'][x]['4. close'],
-        //             volume: data['Time Series (5min)'][x]['5. volume']
+        //             volume: +data['Time Series (5min)'][x]['5. volume']
         //         })
         //     }
         // })

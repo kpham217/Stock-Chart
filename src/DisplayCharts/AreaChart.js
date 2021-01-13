@@ -1,19 +1,25 @@
 
 import React from "react";
 import PropTypes from "prop-types";
-
 import { scaleTime } from "d3-scale";
 import { curveMonotoneX } from "d3-shape";
-
 import { ChartCanvas, Chart } from "react-stockcharts";
 import { AreaSeries } from "react-stockcharts/lib/series";
 import { XAxis, YAxis } from "react-stockcharts/lib/axes";
 import { fitWidth } from "react-stockcharts/lib/helper";
+import { OHLCTooltip } from "react-stockcharts/lib/tooltip";
 import { createVerticalLinearGradient, hexToRGBA } from "react-stockcharts/lib/utils";
 import classes from '../Canvas.module.css';
 import { discontinuousTimeScaleProvider } from "react-stockcharts/lib/scale";
 import { last } from "react-stockcharts/lib/utils";
+import { format } from "d3-format";
+import { timeFormat } from "d3-time-format";
 
+import {
+	CrossHairCursor,
+	MouseCoordinateX,
+	MouseCoordinateY
+} from "react-stockcharts/lib/coordinates";
 const canvasGradient = createVerticalLinearGradient([
 	{ stop: 0, color: hexToRGBA("#b5d0ff", 0.2) },
 	{ stop: 0.7, color: hexToRGBA("#6fa4fc", 0.4) },
@@ -42,6 +48,7 @@ class AreaChart extends React.Component {
                 className={classes.canvas}
 				xAccessor={xAccessor}
 				xScale={xScale}
+				displayXAccessor={displayXAccessor}
 				xExtents={xExtents}
 			>
 				<Chart id={0} yExtents={d => d.close}>
@@ -53,7 +60,16 @@ class AreaChart extends React.Component {
 						</linearGradient>
 					</defs>
 					<XAxis axisAt="bottom" orient="bottom" ticks={6}/>
-					<YAxis axisAt="left" orient="left" />
+					<YAxis axisAt="right" orient="right" />
+					<MouseCoordinateX
+						at="bottom"
+						orient="bottom"
+						displayFormat={timeFormat("%Y-%m-%d")} />
+					<MouseCoordinateY
+						at="right"
+						orient="right"
+						displayFormat={format(".2f")}
+					/>
 					<AreaSeries
 						yAccessor={d => d.close}
 						fill="url(#MyGradient)"
@@ -62,6 +78,8 @@ class AreaChart extends React.Component {
 						canvasGradient={canvasGradient}
 					/>
 				</Chart>
+				
+				<CrossHairCursor />
 			</ChartCanvas>
 		);
 	}

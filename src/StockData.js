@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Getstockdata } from './getStockData';
 // import LineChart from 'react-linechart';
-import CandleStick from './CandleStick';
+import CandleStick from './DisplayCharts/CandleStick';
 import AreaChart from './DisplayCharts/AreaChart'
 import { TypeChooser } from "react-stockcharts/lib/helper";
 import classes from './ChartComponent.module.css';
@@ -11,10 +11,12 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+const dataFile = require('./data/symbolFile.json')
 export function Stockdata(props) {
     const [symbolData, setData] = useState([]);
     const [value, setValue] = React.useState('area');
-
+   
+    // console.log(csvJSON(symbolFile))
     const handleChange = (event) => {
         setValue(event.target.value);
     };
@@ -30,22 +32,22 @@ export function Stockdata(props) {
             setData(data);
         }
         fetchMyData();
-        // const interval = setInterval(() => {
+        const interval = setInterval(() => {
 
-        //     try {
-        //         async function fetchMyData() {
-        //             const data = await Getstockdata();
-        //             console.log(data);
-        //             setData(data);
-        //           }
-        //           fetchMyData();
+            try {
+                async function fetchMyData() {
+                    const data = await Getstockdata();
+                    console.log(data);
+                    setData(data);
+                  }
+                  fetchMyData();
 
-        //     } catch (error) {
-        //         console.log(error);
-        //     }
+            } catch (error) {
+                console.log(error);
+            }
 
-        // }, 60000 * 5);
-        // return () => clearInterval(interval);
+        }, 60000 * 15);
+        return () => clearInterval(interval);
     }, []);
 
     return (
@@ -70,4 +72,5 @@ export function Stockdata(props) {
             {/* </div> */}
         </div>
     )
+   
 }
