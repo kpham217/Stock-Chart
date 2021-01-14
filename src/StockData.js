@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Getstockdata } from './getStockData';
-// import LineChart from 'react-linechart';
 import CandleStick from './DisplayCharts/CandleStick';
 import AreaChart from './DisplayCharts/AreaChart'
-import { TypeChooser } from "react-stockcharts/lib/helper";
-import classes from './ChartComponent.module.css';
-// import  LineChart from './LineChart';
+import SearchArea from './SearchArea';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -57,6 +54,7 @@ export function Stockdata(props) {
                 <div style={{ position: 'relative' }}
                 // className={classes.chartWrapper}
                 >
+                    <SearchArea></SearchArea>
                     <h1 >{symbolData[0].stock_symbol}</h1>
                     {value === 'area' ?   <AreaChart type={'hybrid'} data={symbolData} /> :  <CandleStick type={'hybrid'} data={symbolData} /> }
                   
