@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { timeParse } from "d3-time-format";
-export async function Getstockdata(symbol) {
+export async function Getstockdata({tickerSymbol, companyName}) {
     const API_KEY = 'H21T6LC1K3QPU5EI'
-    const stock_symbol = symbol
+    // const stock_symbol = symbol
     let period = [];
     let closeValues = [];
     let openValues = [];
@@ -13,7 +13,7 @@ export async function Getstockdata(symbol) {
 
     try{
         console.log('executed');
-        await fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${stock_symbol}&interval=5min&apikey=${API_KEY}`)
+        await fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${tickerSymbol}&interval=5min&apikey=${API_KEY}`)
         .then(function(res) {
             return res.json();
         })
@@ -21,7 +21,8 @@ export async function Getstockdata(symbol) {
             console.log(data)
             for (let x in data['Time Series (5min)']){
                 resultdata.push({
-                    stock_symbol,
+                    tickerSymbol,
+                    companyName,
                     date: new Date(x),
                     open: data['Time Series (5min)'][x]['1. open'],
                     high: data['Time Series (5min)'][x]['2. high'],

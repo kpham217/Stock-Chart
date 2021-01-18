@@ -1,5 +1,5 @@
 
-import classes from '../Canvas.module.css';
+import classes from '../styles/Canvas.module.css';
 
 import React from "react";
 import PropTypes from "prop-types";

@@ -1,6 +1,4 @@
-import logo from './logo.svg';
 import './App.css';
-import { Getstockdata } from './getStockData';
 import {Stockdata} from './StockData';
 function App() {
   // Stockdata();

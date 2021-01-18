@@ -8,8 +8,8 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-import classes from './StockData.module.css';
-
+import classes from './styles/StockData.module.css';
+import searchlogo from './imgs/search.png'
 const dataFile = require('./data/symbolFile.json')
 export function Stockdata(props) {
     const [symbolData, setData] = useState([]);
@@ -58,7 +58,17 @@ export function Stockdata(props) {
                   
                     
                     <div className={classes.chartArea}> 
-                    <h1  >{symbolData[0].stock_symbol}</h1>
+                    <h1  className={classes.stockName}>{symbolData[0].companyName}</h1>
+
+                    <div style={{clear:'both'}}> 
+                    <h1 className={classes.price}>{parseFloat(symbolData[99].close).toFixed(2)}</h1>
+                    <span className={classes.currency}>USD</span>
+                    <span className={(parseFloat(symbolData[99].close)-parseFloat(symbolData[0].close)).toFixed(2) > 0 ? classes.up : classes.down}>
+                        {(parseFloat(symbolData[99].close)-parseFloat(symbolData[0].close)).toFixed(2)}  (
+                            {(((parseFloat(symbolData[99].close)-parseFloat(symbolData[0].close)).toFixed(2)/parseFloat(symbolData[99].close))*100).toFixed(2)}%) 
+                    </span>
+                    </div>
+                  
                     {value === 'area' ?   <AreaChart type={'hybrid'} data={symbolData} /> :  <CandleStick type={'hybrid'} data={symbolData} /> }
                   
                     <FormControl style={{ float: 'left', margin: '10px 10px 10px 50px' }} >
@@ -69,10 +79,14 @@ export function Stockdata(props) {
                         </RadioGroup>
                     </FormControl>
                     </div>
-                </div>) : null}
+                </div>) : <div><h1 className={classes.header}>Search any ticker to get a quote</h1>
+                <img  src={searchlogo} className={classes.search} alt="search"/>
+
+                </div>}
 
             {/* </div> */}
         </div>
     )
    
 }
+ 

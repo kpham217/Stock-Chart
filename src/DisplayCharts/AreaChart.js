@@ -9,7 +9,7 @@ import { XAxis, YAxis } from "react-stockcharts/lib/axes";
 import { fitWidth } from "react-stockcharts/lib/helper";
 import { OHLCTooltip } from "react-stockcharts/lib/tooltip";
 import { createVerticalLinearGradient, hexToRGBA } from "react-stockcharts/lib/utils";
-import classes from '../Canvas.module.css';
+import classes from '../styles/Canvas.module.css';
 import { discontinuousTimeScaleProvider } from "react-stockcharts/lib/scale";
 import { last } from "react-stockcharts/lib/utils";
 import { format } from "d3-format";
