@@ -3,6 +3,8 @@ const express = require("express");
 // app.use(express.urlencoded({ extended: false }));
 const PORT = process.env.PORT || 3001;
 const app = express();
+app.use(express.static(process.cwd()+"/build"));
+
 app.use('/', (req,res) => {
     res.send('abd')
 })
