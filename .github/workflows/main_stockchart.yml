@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'StockChart'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_431594E4233A43A99C6DA947C4437CA4 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F64D4492BDB44242A8B872200767415D }}
           package: .
