@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/e048a993-6018-4edc-8d88-a1e281005679/resourceGroups/VstsRG-StockChart-c2dd/providers/Microsoft.Web/sites/StockChart",
+    "appService.deploySubpath": "."
+}
