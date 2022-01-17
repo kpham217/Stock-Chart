@@ -7,8 +7,16 @@ import SearchIcon from '@material-ui/icons/Search';
 import { makeStyles } from '@material-ui/core/styles';
 import classes from './styles/SearchAreaStyle.module.css';
 import { useState, useEffect } from 'react'
+import axios from 'axios'
+axios.defaults.withCredentials = true;
 const dataFile = require('./data/symbolFile.json')
 
+axios.get('https://stockchart.azurewebsites.net/api').then(res => {
+    // axios.get('http://localhost:3001/api').then(res => {
+
+    console.log(res.data)
+    console.log('test')
+})
 const useStyles = makeStyles((theme) => ({
     textField: {
         float: 'left',

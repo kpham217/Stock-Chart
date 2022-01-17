@@ -10,6 +10,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import classes from './styles/StockData.module.css';
 import searchlogo from './imgs/search.png'
+import axios from "axios";
 const dataFile = require('./data/symbolFile.json')
 export function Stockdata(props) {
     const [symbolData, setData] = useState([]);
@@ -18,6 +19,7 @@ export function Stockdata(props) {
     // console.log(csvJSON(symbolFile))
     const handleChange = (event) => {
         setValue(event.target.value);
+        
     };
 
     // useEffect(async () => {
